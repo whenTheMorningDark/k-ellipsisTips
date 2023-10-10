@@ -1,6 +1,6 @@
 <template>
   <div class="k-typography">
-    <popper :content="fullText" hover class="dark" placement="top-start">
+    <popper :content="fullText" class="dark" placement="top-start" arrow hover>
       <p ref="wrapperRef">{{ ellipsisText }}{{ isEllipsis ? "..." : "" }}</p>
     </popper>
   </div>

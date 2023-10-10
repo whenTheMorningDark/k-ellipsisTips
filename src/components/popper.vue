@@ -10,27 +10,33 @@
       @click="togglePopper"
       @focus="openPopper"
       @keyup.esc="closePopper"
+      class="k-triggerNode"
     >
       <slot />
     </div>
-    <Transition name="fade">
-      <div
-        @click="!interactive && closePopper()"
-        v-show="shouldShowPopper"
-        class="popper"
-        ref="popperNode"
-      >
-        <slot name="content" :close="close" :isOpen="modifiedIsOpen">
-          {{ content }}
-        </slot>
-      </div>
-    </Transition>
+    <Teleport to="body">
+      <Transition name="fade">
+        <div
+          @click="!interactive && closePopper()"
+          v-show="shouldShowPopper"
+          @mouseover="hover && openPopper()"
+          @mouseleave="hover && closePopper()"
+          class="popper"
+          ref="popperNode"
+        >
+          <slot name="content" :close="close" :isOpen="modifiedIsOpen">
+            {{ content }}
+          </slot>
+          <Arrow v-if="arrow" />
+        </div>
+      </Transition>
+    </Teleport>
   </div>
 </template>
 
 <script setup lang="ts">
 import { debounce } from "debounce";
-
+import Arrow from "./Arrow.vue";
 import {
   ref,
   computed,
@@ -41,7 +47,7 @@ import {
   watchEffect,
   onMounted,
 } from "vue";
-import { usePopper, useContent, useClickAway } from "./hooks/index.js";
+import { usePopper, useContent, useClickOutside } from "./hooks/index";
 
 const emit = defineEmits(["open:popper", "close:popper"]);
 const slots = useSlots();
@@ -294,7 +300,9 @@ watchEffect(() => {
  */
 watchEffect(() => {
   if (enableClickAway.value) {
-    useClickAway(popperContainerNode, closePopper);
+    useClickOutside(popperContainerNode, closePopper, {
+      ignore: [".popper"],
+    });
   }
 });
 </script>
@@ -319,7 +327,7 @@ watchEffect(() => {
 
 .popper:hover,
 .popper:hover > #arrow::before {
-  background: var(--popper-theme-background-color-hover);
+  background: #333;
 }
 
 .inline-block {

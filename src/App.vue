@@ -13,13 +13,13 @@ const a =
       plan or specification in the form of a prototype, product or process. The
       verb to design expresses the process of developing a design. The verb to
       design expresses the process of developing a design.`);
-const change = () => {
-  a.value = "A design is a plan or specification";
-};
+// const change = () => {
+//   a.value = "A design is a plan or specification";
+// };
 </script>
 
 <template>
-  <div style="width: 100%">
+  <div style="width: 500px">
     <kEllipsistips :text="a" />
     <!-- <p v-ellipsis="a" /> -->
     <!-- <button @click="change">按钮</button> -->

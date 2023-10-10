@@ -37,8 +37,7 @@
       "src/**/*.tsx",
       "src/**/*.vue",
       "tests/**/*.ts",
-      "tests/**/*.tsx"
-, "src/components/hooks/useClickAway.ts", "src/components/hooks/usePopper.ts"    ],
+      "tests/**/*.tsx"],
     "exclude": [
       "node_modules"
     ]
