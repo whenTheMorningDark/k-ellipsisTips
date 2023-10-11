@@ -106,6 +106,15 @@ export default (
   }
 
   // 寻找最多的文字
+  /**
+   *
+   * @param textNode 文本节点
+   * @param startLoc 起始index
+   * @param endLoc 文本长度
+   * @param lastSuccessLoc 最后寻找到的节点
+   * @returns null
+   * 时间复杂度为o(logn),最坏情况下，如果我们不能在二分查找中找到满足条件的长度，我们需要从 endLoc 开始，一步步向回退，再检查每个长度，这将使时间复杂度变为 O(n)
+   */
   function measureText(
     textNode: Text,
     startLoc = 0,
