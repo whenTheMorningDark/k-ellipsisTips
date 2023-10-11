@@ -316,6 +316,7 @@ watchEffect(() => {
   padding: 5px 11px;
   max-width: 38ch;
   word-wrap: break-word;
+  font-size: 12px;
 }
 
 .popper:hover,

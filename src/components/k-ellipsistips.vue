@@ -1,23 +1,26 @@
 <template>
-  <div class="k-typography">
+  <div class="k-typography" ref="typographyRef">
     <popper
       :content="fullText"
       class="dark"
-      placement="right-start"
+      placement="bottom-start"
       arrow
       v-if="isEllipsis"
     >
-      <p ref="wrapperRef">{{ ellipsisText }}{{ isEllipsis ? "..." : "" }}</p>
+      <span ref="wrapperRef" style="display: inline-block; width: 100%"
+        >{{ ellipsisText }}{{ isEllipsis ? "..." : "" }}</span
+      >
     </popper>
-    <p ref="wrapperRef" v-else>
+    <span ref="wrapperRef" v-else style="display: inline-block; width: 100%">
       {{ ellipsisText }}
-    </p>
+    </span>
   </div>
 </template>
 <script setup lang="ts">
 import { ref, onMounted, nextTick, watch } from "vue";
 import measure from "./measure";
 import popper from "./popper.vue";
+import { useResizeObserver } from "@vueuse/core";
 interface Props {
   text: string;
 }
@@ -36,6 +39,7 @@ const wrapperRef = ref();
 const ellipsisText = ref("");
 const fullText = ref();
 const isEllipsis = ref(false);
+const typographyRef = ref();
 const ellipsisConfig = ref({
   rows: 1,
   suffix: "",
@@ -60,7 +64,15 @@ const init = async (textStr: string) => {
 };
 
 onMounted(async () => {
-  init(props.text);
+  if (!typographyRef.value) {
+    return;
+  }
+  useResizeObserver(typographyRef.value, (entries) => {
+    const entry = entries[0];
+    const { width, height } = entry.contentRect;
+    console.log(width, "entries", height);
+    init(props.text);
+  });
 });
 </script>
 <style lang="scss" scoped>

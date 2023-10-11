@@ -7,8 +7,8 @@
 #arrow::before {
   transition: background 250ms ease-in-out;
   position: absolute;
-  width: 10px;
-  height: 10px;
+  width: 6px;
+  height: 6px;
   box-sizing: border-box;
   background: #333333;
 }
@@ -25,7 +25,7 @@
 
 /* Top arrow */
 .popper[data-popper-placement^="top"] > #arrow {
-  bottom: -5px;
+  bottom: -3px;
 }
 
 .popper[data-popper-placement^="top"] > #arrow::before {
@@ -35,7 +35,7 @@
 
 /* Bottom arrow */
 .popper[data-popper-placement^="bottom"] > #arrow {
-  top: -5px;
+  top: -3px;
 }
 
 .popper[data-popper-placement^="bottom"] > #arrow::before {
@@ -45,7 +45,7 @@
 
 /* Left arrow */
 .popper[data-popper-placement^="left"] > #arrow {
-  right: -5px;
+  right: -3px;
 }
 
 .popper[data-popper-placement^="left"] > #arrow::before {
@@ -55,6 +55,6 @@
 
 /* Right arrow */
 .popper[data-popper-placement^="right"] > #arrow {
-  left: -5px;
+  left: -3px;
 }
 </style>
