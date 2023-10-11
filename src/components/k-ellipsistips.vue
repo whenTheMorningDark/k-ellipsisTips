@@ -1,8 +1,18 @@
 <template>
   <div class="k-typography">
-    <popper :content="fullText" class="dark" placement="top-start" arrow hover>
+    <popper
+      :content="fullText"
+      class="dark"
+      placement="top-start"
+      arrow
+      hover
+      v-if="isEllipsis"
+    >
       <p ref="wrapperRef">{{ ellipsisText }}{{ isEllipsis ? "..." : "" }}</p>
     </popper>
+    <p ref="wrapperRef" v-else>
+      {{ ellipsisText }}
+    </p>
   </div>
 </template>
 <script setup lang="ts">
