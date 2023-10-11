@@ -1,6 +1,6 @@
 <template>
   <div
-    class="inline-block"
+    class="k-popper"
     @mouseleave="hover && closePopper()"
     ref="popperContainerNode"
   >
@@ -308,21 +308,14 @@ watchEffect(() => {
 </script>
 
 <style scoped>
-.inline-block {
-  display: inline-block;
-}
 .popper {
   transition: background 250ms ease-in-out;
-  background: #333;
-  color: white;
-  /* padding: var(--popper-theme-padding);
-  color: var(--popper-theme-text-color);
-  border-radius: var(--popper-theme-border-radius);
-  border-width: var(--popper-theme-border-width);
-  border-style: var(--popper-theme-border-style);
-  border-color: var(--popper-theme-border-color);
-  box-shadow: var(--popper-theme-box-shadow);
-  z-index: v-bind(zIndex); */
+  background: #303133;
+  color: #fff;
+  border-radius: 4px;
+  padding: 5px 11px;
+  max-width: 38ch;
+  word-wrap: break-word;
 }
 
 .popper:hover,
@@ -330,7 +323,7 @@ watchEffect(() => {
   background: #333;
 }
 
-.inline-block {
+.k-popper {
   display: inline-block;
   width: 100%;
 }

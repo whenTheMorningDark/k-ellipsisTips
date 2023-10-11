@@ -3,9 +3,8 @@
     <popper
       :content="fullText"
       class="dark"
-      placement="top-start"
+      placement="right-start"
       arrow
-      hover
       v-if="isEllipsis"
     >
       <p ref="wrapperRef">{{ ellipsisText }}{{ isEllipsis ? "..." : "" }}</p>
