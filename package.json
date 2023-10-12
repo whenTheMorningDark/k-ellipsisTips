@@ -2,6 +2,7 @@
   "name": "k-ellipsis-tips",
   "version": "1.0.0",
   "description": "vue3实现文字超出宽度隐藏",
+  "type": "module",
   "author": {
     "name": "kafei",
     "email": "404792402@qq.com",
@@ -13,6 +14,9 @@
   },
   "scripts": {
     "dev": "vite",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:serve": "vitepress serve docs",
     "build:stage": "vue-tsc --noEmit && vite build --mode staging",
     "build:prod": "vue-tsc --noEmit && vite build",
     "preview:stage": "pnpm build:stage && vite preview",
@@ -25,8 +29,10 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.9.2",
+    "vitepress": "^1.0.0-beta.3",
     "vue": "3.3.4",
-    "vue3-popper": "^1.5.0"
+    "@vitejs/plugin-vue-jsx": "^3.0.1",
+    "vitepress-theme-demoblock": "^3.0.3"
   },
   "devDependencies": {
     "@types/debounce": "^1.2.2",
