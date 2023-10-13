@@ -3,8 +3,16 @@ import kEllipsistips from "./components/k-ellipsistips.vue";
 // import Popper from "vue3-popper";
 import { ref } from "vue";
 const a = ref(`中中中中中中中中中中中中中中中中`);
+const f = ref(false)
 const change = () => {
-  a.value = "A design";
+  if(f.value){
+    a.value = "中中中中中中中中中中中中中中中中";
+    f.value = false
+  } else {
+    a.value = `A design`
+    f.value = true
+  }
+  
 };
 </script>
 

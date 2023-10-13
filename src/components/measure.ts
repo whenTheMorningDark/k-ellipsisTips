@@ -144,7 +144,8 @@ export default (
   }
 
   measureText(textNode);
-
+  // 删除ellipsisContainer节点
+  // ellipsisContainer.parentNode?.removeChild(ellipsisContainer);
   return {
     text: textNode.textContent,
     ellipsis: true,

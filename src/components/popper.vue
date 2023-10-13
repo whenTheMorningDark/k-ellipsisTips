@@ -235,9 +235,10 @@ const enableClickAway = computed(
 //     ? `border: ${offsetDistance.value}px solid transparent; margin: -${offsetDistance.value}px;`
 //     : null
 // );
-
-const openPopperDebounce = debounce(open, openDelay.value);
-const closePopperDebounce = debounce(close, closeDelay.value);
+let openDelayNumber = Number(openDelay.value)  || 0;
+let closeDelayNumber = Number(closeDelay.value) || 0;
+const openPopperDebounce = debounce(open, openDelayNumber);
+const closePopperDebounce = debounce(close, closeDelayNumber);
 
 const openPopper = async () => {
   if (invalid.value || manualMode.value) {
